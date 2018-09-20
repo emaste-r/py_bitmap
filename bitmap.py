@@ -15,10 +15,10 @@ class Bitmap(object):
 
         print "__init__: size=%s" % self.size
 
-        a = number_count / (2 ** 3)  # byte 字节
-        b = float(a) / (2 ** 10)  # Kb
-        c = float(b) / (2 ** 10)  # Mb
-        d = float(c) / (2 ** 10)  # Gb
+        a = float(number_count) / (2 ** 3)  # byte 字节
+        b = float(number_count) / ((2 ** 10) * (2 ** 3))  # Kb
+        c = float(number_count) / ((2 ** 10) * (2 ** 10) * (2 ** 3))  # Mb
+        d = float(number_count) / ((2 ** 10) * (2 ** 10) * (2 ** 10) * (2 ** 3))  # Gb
         print "__init__: memory size=%s Byte, %.3fKb, %.3fMb, %.3fGb " % (a, b, c, d)
 
     @staticmethod
@@ -107,4 +107,5 @@ if __name__ == '__main__':
 
     bm.print_bitmap()
 
-    big_bm = Bitmap(10 ** 9, init_array=False)
+    print "40亿数字占用内存："
+    big_bm = Bitmap(4 * 10 ** 9, init_array=False)
